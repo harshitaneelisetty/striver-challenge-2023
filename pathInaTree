@@ -1,0 +1,53 @@
+#https://www.codingninjas.com/codestudio/problems/path-in-a-tree_8230860?challengeSlug=striver-sde-challenge
+
+def isPresent(node: TreeNode, target: int, result: List[int]) -> bool:
+    if node is None:
+        return False
+    
+    if node.data == target:
+        return True
+    
+    if isPresent(node.left, target, result):
+        result.append(node.left.data)
+        return True
+    
+    if isPresent(node.right, target, result):
+        result.append(node.right.data)
+        return True
+    
+    return False
+
+
+def pathInATree(root: TreeNode, target: int) -> List[int]:
+    result = []
+    isPresent(root, target, result)
+    result.append(root.data)
+    result.reverse()
+    return result
+
+#if the current nodeis none it means I have reached the end of a branch without finding the target node
+#so i retuned false
+#if node.data is equal to target i returned true
+#i called function recursively for left and right child nodes of the curr node
+#if i found target node in left subtree i returned true by appending node.left.data value to res list
+#if i found target node in right subtree i returned true by appending node.right.data value to res list
+#if i didnt found target node in either subtree i returned false
+#in main function i called isPresent function modified the res list if target node is found
+#finally i reversed the res list and returned
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
